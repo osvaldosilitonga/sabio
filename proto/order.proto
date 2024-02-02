@@ -1,0 +1,35 @@
+syntax = "proto3";
+
+package order;
+
+// import "google/protobuf/empty.proto";
+
+option go_package = "internal/order";
+
+service OrderService {
+    rpc Create(CreateReq) returns (Order);
+    rpc FindById(FindByIdReq) returns (Order);
+}
+
+message Empty{}
+
+message Order {
+  int64 id = 1;
+  int64 customerId = 2;
+  int64 productId = 3;
+  int64 qty = 4;
+  float total = 5;
+  string createdAt = 6;
+  string updatedAt = 7;
+}
+
+// Request
+message CreateReq {
+    int64 customerId = 1;
+    int64 productId = 2;
+    int64 qty = 3;
+}
+
+message FindByIdReq {
+    int64 orderId = 1;
+}

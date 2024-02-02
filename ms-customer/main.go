@@ -2,9 +2,9 @@ package main
 
 import (
 	"fmt"
-	"ms-product/helpers"
-	"ms-product/initializers"
-	"ms-product/routes"
+	"ms-customer/helpers"
+	"ms-customer/initializers"
+	"ms-customer/routes"
 	"os"
 
 	"github.com/go-playground/validator"
@@ -25,6 +25,6 @@ func main() {
 
 	routes.Routes(e)
 
-	PORT := os.Getenv("PRODUCT_PORT")
+	PORT := os.Getenv("CUSTOMER_PORT")
 	e.Logger.Fatal(e.Start(fmt.Sprintf(":%v", PORT)))
 }

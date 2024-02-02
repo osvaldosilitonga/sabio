@@ -1,0 +1,43 @@
+syntax = "proto3";
+
+package product;
+
+option go_package = "internal/product";
+
+service ProductService {
+    rpc Create(Product) returns (ProductRes);
+    rpc Update(Product) returns (ProductRes);
+    rpc Delete(DeleteReq) returns (ProductRes);
+    rpc FindAll(Empty) returns (FindAllRes);
+    rpc FindById(FindByIdReq) returns (Product);
+}
+
+message Empty {}
+
+message Product {
+    int64 id = 1;
+    string name = 2;
+    float price = 3;
+    int64 stock = 4;
+    string createdAt = 5;
+    string updatedAt = 6;
+}
+
+// Request
+message DeleteReq {
+    int64 id = 1;
+}
+
+message FindByIdReq {
+    int64 id = 1;
+}
+
+
+// Response
+message ProductRes {
+    string msg = 1;
+}
+
+message FindAllRes {
+    repeated Product products = 1;
+}

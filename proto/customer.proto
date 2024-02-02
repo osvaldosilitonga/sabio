@@ -1,0 +1,47 @@
+syntax = "proto3";
+
+package customer;
+
+option go_package = "internal/customer";
+
+service CustomerService {
+    rpc Create(Customer) returns (CustomerRes);
+    rpc Update(Customer) returns (CustomerRes);
+    rpc Delete(DeleteReq) returns (CustomerRes);
+    rpc FindAll(Empty) returns (FindAllRes);
+    rpc FindById(FindByIdReq) returns (Customer);
+}
+
+message Empty{}
+
+message Customer {
+  int64 id = 1;
+  string name = 2;
+  string email = 3;
+  string createdAt = 4;
+  string updatedAt = 5;
+}
+
+// Request
+message UpdateReq {
+    int64 id = 1;
+    string name = 2;
+    string email = 3;
+}
+
+message DeleteReq {
+    int64 id = 1;
+}
+
+message FindByIdReq {
+    int64 id = 1;
+}
+
+// Response
+message CustomerRes {
+    string msg = 1;
+}
+
+message FindAllRes {
+    repeated Customer customers = 1;
+}
