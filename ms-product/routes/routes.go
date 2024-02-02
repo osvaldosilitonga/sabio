@@ -19,7 +19,7 @@ func Routes(e *echo.Echo) {
 	v1 := e.Group("/v1")
 	{
 		v1.POST("/product", productController.Create)
-		v1.POST("/product", productController.Update)
+		v1.PUT("/product", productController.Update)
 		v1.DELETE("/product", productController.Delete)
 		v1.GET("/product", productController.FindAll)
 		v1.GET("/product/:id", productController.FindById)
